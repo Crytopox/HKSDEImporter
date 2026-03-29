@@ -15,8 +15,14 @@ public sealed class TypeMapper : IMapper<RawType, TypeItem>
             raw.Published,
             raw.PortionSize,
             raw.IconId,
+            raw.SoundId,
+            raw.GraphicId,
+            raw.MarketGroupId,
+            raw.RaceId,
             raw.Mass,
+            raw.Volume,
+            raw.Capacity,
             raw.Radius,
-            raw.Volume);
+            raw.BasePrice);
     }
 }

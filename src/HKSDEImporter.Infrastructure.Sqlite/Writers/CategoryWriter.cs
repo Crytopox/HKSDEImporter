@@ -1,7 +1,6 @@
 using HKSDEImporter.Core.Contracts;
 using HKSDEImporter.Core.Models.Domain;
 using HKSDEImporter.Infrastructure.Sqlite.Connections;
-using Microsoft.Data.Sqlite;
 
 namespace HKSDEImporter.Infrastructure.Sqlite.Writers;
 
@@ -21,33 +20,33 @@ public sealed class CategoryWriter : ICategoryWriter
         using var transaction = connection.BeginTransaction();
 
         using var command = connection.CreateCommand();
-        command.CommandText = "INSERT INTO categories (category_id, name, published, icon_id) VALUES ($categoryId, $name, $published, $iconId);";
+        command.CommandText = "INSERT INTO invCategories (categoryID, categoryName, iconID, published) VALUES ($categoryId, $categoryName, $iconId, $published);";
         command.Transaction = transaction;
 
         var categoryId = command.CreateParameter();
         categoryId.ParameterName = "$categoryId";
         command.Parameters.Add(categoryId);
 
-        var name = command.CreateParameter();
-        name.ParameterName = "$name";
-        command.Parameters.Add(name);
-
-        var published = command.CreateParameter();
-        published.ParameterName = "$published";
-        command.Parameters.Add(published);
+        var categoryName = command.CreateParameter();
+        categoryName.ParameterName = "$categoryName";
+        command.Parameters.Add(categoryName);
 
         var iconId = command.CreateParameter();
         iconId.ParameterName = "$iconId";
         command.Parameters.Add(iconId);
+
+        var published = command.CreateParameter();
+        published.ParameterName = "$published";
+        command.Parameters.Add(published);
 
         foreach (var category in categories)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
             categoryId.Value = category.CategoryId;
-            name.Value = category.Name;
-            published.Value = category.Published ? 1 : 0;
+            categoryName.Value = category.Name;
             iconId.Value = category.IconId.HasValue ? category.IconId.Value : DBNull.Value;
+            published.Value = category.Published ? 1 : 0;
 
             await command.ExecuteNonQueryAsync(cancellationToken);
         }

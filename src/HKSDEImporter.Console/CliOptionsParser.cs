@@ -13,7 +13,7 @@ public static class CliOptionsParser
     {
         var inputMode = SdeInputMode.Direct;
         string? inputPath = null;
-        string outputPath = "./eve.db";
+        string outputPath = "./eve-hk-sde.db";
         var overwrite = false;
         var verbose = false;
 
@@ -70,14 +70,14 @@ public static class CliOptionsParser
 HKSDEImporter - EVE Online SDE JSONL -> SQLite importer
 
 Usage:
-  hksdeimporter --output ./eve.db [--overwrite] [--verbose]
-  hksdeimporter --source direct --output ./eve.db [--overwrite] [--verbose]
-  hksdeimporter --source local --input ./.local-sde-copy --output ./eve.db [--overwrite] [--verbose]
+  hksdeimporter --output ./eve-hk-sde.db [--overwrite] [--verbose]
+  hksdeimporter --source direct --output ./eve-hk-sde.db [--overwrite] [--verbose]
+  hksdeimporter --source local --input ./.local-sde-copy --output ./eve-hk-sde.db [--overwrite] [--verbose]
 
 Options:
   --source <direct|local>  Input source mode (default: direct)
   --input <path>           Local SDE JSONL directory (implies --source local)
-  --output <path>          Output SQLite file path (default: ./eve.db)
+  --output <path>          Output SQLite file path (default: ./eve-hk-sde.db)
   --overwrite              Delete output DB if it already exists
   --verbose                Print extended warning details
   -h, --help               Show help

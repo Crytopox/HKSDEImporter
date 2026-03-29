@@ -4,4 +4,9 @@ public sealed record Group(
     int GroupId,
     int CategoryId,
     string Name,
-    bool Published);
+    bool Published,
+    int? IconId,
+    bool UseBasePrice,
+    bool Anchored,
+    bool Anchorable,
+    bool FittableNonSingleton);

@@ -22,3 +22,4 @@
 *.db
 *.db-shm
 *.db-wal
+.example-database-output/eve-sde-fuzzworks.sqlite

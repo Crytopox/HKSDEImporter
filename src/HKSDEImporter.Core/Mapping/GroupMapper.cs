@@ -11,6 +11,11 @@ public sealed class GroupMapper : IMapper<RawGroup, Group>
             raw.Key,
             raw.CategoryId,
             raw.Name?.En?.Trim() ?? string.Empty,
-            raw.Published);
+            raw.Published,
+            raw.IconId,
+            raw.UseBasePrice,
+            raw.Anchored,
+            raw.Anchorable,
+            raw.FittableNonSingleton);
     }
 }

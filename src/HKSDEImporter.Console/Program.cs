@@ -69,7 +69,7 @@ internal static class Program
 
         var outputPath = AnsiConsole.Prompt(
             new TextPrompt<string>("Output SQLite path:")
-                .DefaultValue("./eve.db"));
+                .DefaultValue("./eve-hk-sde.db"));
 
         var overwrite = AnsiConsole.Confirm("Overwrite output DB if it exists?", true);
         var verbose = AnsiConsole.Confirm("Verbose warning output?", false);
@@ -121,7 +121,32 @@ internal static class Program
         {
             new ImportCategoriesStep(rawReader, new CategoryMapper(), new CategoryValidator(), new CategoryWriter(connectionFactory), observer),
             new ImportGroupsStep(rawReader, new GroupMapper(), new GroupValidator(), new GroupWriter(connectionFactory), observer),
-            new ImportTypesStep(rawReader, new TypeMapper(), new TypeValidator(), new TypeWriter(connectionFactory), observer)
+            new ImportTypesStep(rawReader, new TypeMapper(), new TypeValidator(), new TypeWriter(connectionFactory), observer),
+            new ImportMarketGroupsStep(rawReader, new MarketGroupMapper(), new MarketGroupValidator(), new MarketGroupWriter(connectionFactory), observer),
+            new ImportMetaGroupsStep(rawReader, new MetaGroupMapper(), new MetaGroupValidator(), new MetaGroupWriter(connectionFactory), observer),
+            new ImportDogmaUnitsStep(rawReader, new DogmaUnitMapper(), new DogmaUnitValidator(), new DogmaUnitWriter(connectionFactory), observer),
+            new ImportDogmaAttributeCategoriesStep(rawReader, new DogmaAttributeCategoryMapper(), new DogmaAttributeCategoryValidator(), new DogmaAttributeCategoryWriter(connectionFactory), observer),
+            new ImportDogmaAttributesStep(rawReader, new DogmaAttributeMapper(), new DogmaAttributeValidator(), new DogmaAttributeWriter(connectionFactory), observer),
+            new ImportDogmaEffectsStep(rawReader, new DogmaEffectMapper(), new DogmaEffectValidator(), new DogmaEffectWriter(connectionFactory), observer),
+            new ImportTypeDogmaStep(rawReader, new TypeDogmaMapper(), new TypeDogmaWriter(connectionFactory), observer),
+            new ImportTypeMaterialsStep(rawReader, new TypeMaterialMapper(), new TypeMaterialWriter(connectionFactory), observer),
+            new ImportIndustryBlueprintsStep(rawReader, new IndustryMapper(), new IndustryBlueprintValidator(), new IndustryWriter(connectionFactory), observer),
+            new ImportPlanetSchematicsStep(rawReader, new PlanetSchematicsMapper(), new PlanetSchematicValidator(), new PlanetSchematicsWriter(connectionFactory), observer),
+            new ImportStaticVisualsStep(rawReader, new GraphicMapper(), new IconMapper(), new GraphicValidator(), new IconValidator(), new StaticVisualWriter(connectionFactory), observer),
+            new ImportCharacterReferenceStep(rawReader, new FactionMapper(), new RaceMapper(), new BloodlineMapper(), new AncestryMapper(), new CharacterAttributeMapper(), new FactionValidator(), new RaceValidator(), new BloodlineValidator(), new AncestryValidator(), new CharacterAttributeValidator(), new CharacterReferenceWriter(connectionFactory), observer),
+            new ImportCorporationReferenceStep(rawReader, new CorporationActivityMapper(), new NpcCorporationDivisionMapper(), new NpcCorporationMapper(), new CorporationActivityValidator(), new NpcCorporationDivisionValidator(), new NpcCorporationValidator(), new CorporationReferenceWriter(connectionFactory), observer),
+            new ImportStationReferencesStep(rawReader, new StationMapper(), new StationOperationValidator(), new StationServiceValidator(), new StationValidator(), new StationWriter(connectionFactory), observer),
+            new ImportMapDataStep(rawReader, new MapDataMapper(), new MapRegionValidator(), new MapConstellationValidator(), new MapSolarSystemValidator(), new MapLandmarkValidator(), new MapWriter(connectionFactory), observer),
+            new ImportContrabandStep(rawReader, new ContrabandMapper(), new ContrabandTypeRuleValidator(), new ContrabandWriter(connectionFactory), observer),
+            new ImportControlTowerResourcesStep(rawReader, new ControlTowerResourceMapper(), new ControlTowerResourceValidator(), new ControlTowerResourceWriter(connectionFactory), observer),
+            new ImportSupplementalDataStep(rawReader, new SupplementalDataWriter(connectionFactory), observer),
+            new ImportTranslationLanguagesStep(rawReader, new TranslationLanguageMapper(), new TranslationLanguageValidator(), new TranslationLanguageWriter(connectionFactory), observer),
+            new ImportAgentReferencesStep(rawReader, new AgentTypeMapper(), new AgentInSpaceMapper(), new AgentTypeValidator(), new AgentInSpaceValidator(), new AgentReferenceWriter(connectionFactory), observer),
+            new ImportCertificatesStep(rawReader, new CertificateMapper(), new CertValidator(), new CertMasteryValidator(), new CertSkillValidator(), new CertificateWriter(connectionFactory), observer),
+            new ImportSkinsStep(rawReader, new SkinMapper(), new SkinValidator(), new SkinMaterialValidator(), new SkinShipValidator(), new SkinLicenseValidator(), new SkinWriter(connectionFactory), observer),
+            new ImportNpcAgentDataStep(rawReader, new NpcAgentMapper(), new AgentValidator(), new ResearchAgentValidator(), new NpcCorporationResearchFieldValidator(), new NpcCorporationTradeValidator(), new NpcAgentWriter(connectionFactory), observer),
+            new ImportSdeBuildInfoStep(rawReader, new SdeBuildInfoWriter(connectionFactory), observer),
+            new ImportCompatibilityTablesStep(rawReader, new CompatibilityWriter(connectionFactory), observer)
         };
 
         return new ImportCoordinator(

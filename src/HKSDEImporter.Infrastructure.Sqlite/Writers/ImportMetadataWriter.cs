@@ -27,7 +27,7 @@ public sealed class ImportMetadataWriter : IImportMetadataWriter
 
         using var command = connection.CreateCommand();
         command.CommandText =
-            "INSERT INTO import_metadata (started_at_utc, completed_at_utc, duration_ms, row_counts_json, warning_count, error_count, warnings_json, errors_json) " +
+            "INSERT INTO _hki_import_metadata (started_at_utc, completed_at_utc, duration_ms, row_counts_json, warning_count, error_count, warnings_json, errors_json) " +
             "VALUES ($startedAt, $completedAt, $durationMs, $rowCountsJson, $warningCount, $errorCount, $warningsJson, $errorsJson);";
 
         var duration = completedAtUtc - startedAtUtc;

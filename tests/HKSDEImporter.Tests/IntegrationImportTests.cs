@@ -61,10 +61,10 @@ public sealed class IntegrationImportTests
             await using var conn = new SqliteConnection($"Data Source={outputDb};Pooling=False");
             await conn.OpenAsync();
 
-            Assert.Equal(2, await CountAsync(conn, "categories"));
-            Assert.Equal(2, await CountAsync(conn, "groups"));
-            Assert.Equal(2, await CountAsync(conn, "types"));
-            Assert.Equal(1, await CountAsync(conn, "import_metadata"));
+            Assert.Equal(2, await CountAsync(conn, "invCategories"));
+            Assert.Equal(2, await CountAsync(conn, "invGroups"));
+            Assert.Equal(2, await CountAsync(conn, "invTypes"));
+            Assert.Equal(1, await CountAsync(conn, "_hki_import_metadata"));
         }
         finally
         {

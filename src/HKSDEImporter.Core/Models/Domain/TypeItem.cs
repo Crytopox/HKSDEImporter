@@ -8,6 +8,12 @@ public sealed record TypeItem(
     bool Published,
     int PortionSize,
     int? IconId,
+    int? SoundId,
+    int? GraphicId,
+    int? MarketGroupId,
+    int? RaceId,
     double? Mass,
+    double? Volume,
+    double? Capacity,
     double? Radius,
-    double? Volume);
+    decimal? BasePrice);

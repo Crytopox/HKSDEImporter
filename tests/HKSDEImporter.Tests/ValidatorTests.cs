@@ -20,7 +20,7 @@ public sealed class ValidatorTests
     {
         var validator = new GroupValidator();
 
-        var result = validator.Validate(new Group(5, 0, "Group", true));
+        var result = validator.Validate(new Group(5, 0, "Group", true, null, false, false, false, false));
 
         Assert.False(result.IsValid);
     }
@@ -30,7 +30,7 @@ public sealed class ValidatorTests
     {
         var validator = new TypeValidator();
 
-        var result = validator.Validate(new TypeItem(10, 20, "Type", "Desc", true, 1, null, null, null, null));
+        var result = validator.Validate(new TypeItem(10, 20, "Type", "Desc", true, 1, null, null, null, null, null, null, null, null, null, null));
 
         Assert.True(result.IsValid);
     }

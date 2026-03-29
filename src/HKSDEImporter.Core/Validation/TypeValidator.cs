@@ -21,6 +21,11 @@ public sealed class TypeValidator : IValidator<TypeItem>
             return ValidationResult.Invalid($"Type {value.TypeId} has an empty English name.");
         }
 
+        if (value.PortionSize <= 0)
+        {
+            return ValidationResult.Invalid($"Type {value.TypeId} has invalid portion size {value.PortionSize}.");
+        }
+
         return ValidationResult.Valid();
     }
 }
