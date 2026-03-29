@@ -143,4 +143,3 @@ Legend:
 ## Notes
 - The importer prioritizes correctness, explicit logic, and maintainability over implicit magic.
 - Not all mappings are strictly 1 JSONL row -> 1 DB row; several domains intentionally normalize or compose data for relational querying.
-- If you want a strict raw mirror for specific files, add sidecar raw tables with `rawJson` and file-specific keys.
