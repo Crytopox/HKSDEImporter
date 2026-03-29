@@ -40,6 +40,27 @@ dotnet run --project src/HKSDEImporter.Console/HKSDEImporter.Console.csproj -- -
 dotnet test tests/HKSDEImporter.Tests/HKSDEImporter.Tests.csproj -m:1
 ```
 
+## Publish (Single File)
+Windows x64:
+```powershell
+dotnet publish src/HKSDEImporter.Console/HKSDEImporter.Console.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false -p:CopyOutputSymbolsToPublishDirectory=false -o ./publish/win-x64
+```
+
+Windows x86:
+```powershell
+dotnet publish src/HKSDEImporter.Console/HKSDEImporter.Console.csproj -c Release -r win-x86 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false -p:CopyOutputSymbolsToPublishDirectory=false -o ./publish/win-x86
+```
+
+Linux x64:
+```powershell
+dotnet publish src/HKSDEImporter.Console/HKSDEImporter.Console.csproj -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -p:DebugType=None -p:DebugSymbols=false -p:CopyOutputSymbolsToPublishDirectory=false -o ./publish/linux-x64
+```
+
+Publish all 3 targets with one command:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\publish-all.ps1
+```
+
 ## CLI Quick Reference
 - `--source direct|local`
 - `--input <path>` (required for `local`)
