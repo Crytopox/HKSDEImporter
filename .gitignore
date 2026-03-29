@@ -1,6 +1,24 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+# HKSDEImporter
 ################################################################################
 
 /.vs
+/.local-sde-copy
+
+# Root artifacts
+/bin
 /obj
+
+# Build artifacts in project folders
+**/bin/
+**/obj/
+
+# User/local caches
+/.dotnet/
+/.nuget/
+/.templateengine/
+
+# Local database outputs
+*.db
+*.db-shm
+*.db-wal

@@ -1,3 +1,11 @@
 <Solution>
-  <Project Path="HKSDEImporter.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/HKSDEImporter.Console/HKSDEImporter.Console.csproj" />
+    <Project Path="src/HKSDEImporter.Core/HKSDEImporter.Core.csproj" />
+    <Project Path="src/HKSDEImporter.Infrastructure.Json/HKSDEImporter.Infrastructure.Json.csproj" />
+    <Project Path="src/HKSDEImporter.Infrastructure.Sqlite/HKSDEImporter.Infrastructure.Sqlite.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HKSDEImporter.Tests/HKSDEImporter.Tests.csproj" />
+  </Folder>
 </Solution>
