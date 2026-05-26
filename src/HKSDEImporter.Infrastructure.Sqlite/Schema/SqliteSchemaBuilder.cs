@@ -442,6 +442,8 @@ public sealed class SqliteSchemaBuilder
                 x REAL NULL,
                 y REAL NULL,
                 z REAL NULL,
+                x2D REAL NULL,
+                y2D REAL NULL,
                 radius REAL NULL,
                 luminosity REAL NULL,
                 border INTEGER NOT NULL,

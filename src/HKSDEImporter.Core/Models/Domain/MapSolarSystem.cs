@@ -12,6 +12,8 @@ public sealed record MapSolarSystem(
     double? X,
     double? Y,
     double? Z,
+    double? X2D,
+    double? Y2D,
     double? Radius,
     double? Luminosity,
     bool Border,

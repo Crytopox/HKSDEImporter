@@ -45,6 +45,8 @@ public sealed class MapDataMapper
             raw.Position?.X,
             raw.Position?.Y,
             raw.Position?.Z,
+            raw.Position2D?.X,
+            raw.Position2D?.Y,
             raw.Radius,
             raw.Luminosity,
             raw.Border,

@@ -111,7 +111,7 @@ public sealed class MapWriter : IMapWriter
     {
         using var cmd = connection.CreateCommand();
         cmd.Transaction = transaction;
-        cmd.CommandText = "INSERT INTO mapSolarSystems (solarSystemID, regionID, constellationID, solarSystemName, security, securityClass, factionID, starID, x, y, z, radius, luminosity, border, fringe, corridor, hub, international, regional, wormholeClassID) VALUES ($solarSystemID, $regionID, $constellationID, $solarSystemName, $security, $securityClass, $factionID, $starID, $x, $y, $z, $radius, $luminosity, $border, $fringe, $corridor, $hub, $international, $regional, $wormholeClassID);";
+        cmd.CommandText = "INSERT INTO mapSolarSystems (solarSystemID, regionID, constellationID, solarSystemName, security, securityClass, factionID, starID, x, y, z, x2D, y2D, radius, luminosity, border, fringe, corridor, hub, international, regional, wormholeClassID) VALUES ($solarSystemID, $regionID, $constellationID, $solarSystemName, $security, $securityClass, $factionID, $starID, $x, $y, $z, $x2D, $y2D, $radius, $luminosity, $border, $fringe, $corridor, $hub, $international, $regional, $wormholeClassID);";
 
         var solarSystemId = cmd.CreateParameter(); solarSystemId.ParameterName = "$solarSystemID"; cmd.Parameters.Add(solarSystemId);
         var regionId = cmd.CreateParameter(); regionId.ParameterName = "$regionID"; cmd.Parameters.Add(regionId);
@@ -124,6 +124,8 @@ public sealed class MapWriter : IMapWriter
         var x = cmd.CreateParameter(); x.ParameterName = "$x"; cmd.Parameters.Add(x);
         var y = cmd.CreateParameter(); y.ParameterName = "$y"; cmd.Parameters.Add(y);
         var z = cmd.CreateParameter(); z.ParameterName = "$z"; cmd.Parameters.Add(z);
+        var x2D = cmd.CreateParameter(); x2D.ParameterName = "$x2D"; cmd.Parameters.Add(x2D);
+        var y2D = cmd.CreateParameter(); y2D.ParameterName = "$y2D"; cmd.Parameters.Add(y2D);
         var radius = cmd.CreateParameter(); radius.ParameterName = "$radius"; cmd.Parameters.Add(radius);
         var luminosity = cmd.CreateParameter(); luminosity.ParameterName = "$luminosity"; cmd.Parameters.Add(luminosity);
         var border = cmd.CreateParameter(); border.ParameterName = "$border"; cmd.Parameters.Add(border);
@@ -147,6 +149,8 @@ public sealed class MapWriter : IMapWriter
             x.Value = row.X.HasValue ? row.X.Value : DBNull.Value;
             y.Value = row.Y.HasValue ? row.Y.Value : DBNull.Value;
             z.Value = row.Z.HasValue ? row.Z.Value : DBNull.Value;
+            x2D.Value = row.X2D.HasValue ? row.X2D.Value : DBNull.Value;
+            y2D.Value = row.Y2D.HasValue ? row.Y2D.Value : DBNull.Value;
             radius.Value = row.Radius.HasValue ? row.Radius.Value : DBNull.Value;
             luminosity.Value = row.Luminosity.HasValue ? row.Luminosity.Value : DBNull.Value;
             border.Value = row.Border ? 1 : 0;

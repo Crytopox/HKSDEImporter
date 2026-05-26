@@ -19,5 +19,6 @@ public sealed class RawMapSolarSystem
     public bool International { get; init; }
     public bool Regional { get; init; }
     public RawPosition3D? Position { get; init; }
+    public RawPosition2D? Position2D { get; init; }
     public double? Radius { get; init; }
 }

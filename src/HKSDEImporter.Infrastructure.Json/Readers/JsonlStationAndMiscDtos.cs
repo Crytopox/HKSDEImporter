@@ -92,6 +92,15 @@ internal sealed class JsonlPosition3DDto
     public double? Z { get; init; }
 }
 
+internal sealed class JsonlPosition2DDto
+{
+    [JsonPropertyName("x")]
+    public double? X { get; init; }
+
+    [JsonPropertyName("y")]
+    public double? Y { get; init; }
+}
+
 internal sealed class JsonlMapSolarSystemDto
 {
     [JsonPropertyName("_key")]
@@ -144,6 +153,9 @@ internal sealed class JsonlMapSolarSystemDto
 
     [JsonPropertyName("position")]
     public JsonlPosition3DDto? Position { get; init; }
+
+    [JsonPropertyName("position2D")]
+    public JsonlPosition2DDto? Position2D { get; init; }
 
     [JsonPropertyName("radius")]
     public double? Radius { get; init; }

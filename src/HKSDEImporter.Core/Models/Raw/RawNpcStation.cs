@@ -19,3 +19,9 @@ public sealed class RawPosition3D
     public double? Y { get; init; }
     public double? Z { get; init; }
 }
+
+public sealed class RawPosition2D
+{
+    public double? X { get; init; }
+    public double? Y { get; init; }
+}

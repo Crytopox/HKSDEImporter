@@ -659,6 +659,11 @@ public sealed class JsonLinesSdeReader : IRawSdeReader
                     Y = item.Position.Y,
                     Z = item.Position.Z
                 },
+                Position2D = item.Position2D is null ? null : new RawPosition2D
+                {
+                    X = item.Position2D.X,
+                    Y = item.Position2D.Y
+                },
                 Radius = item.Radius
             };
         }
